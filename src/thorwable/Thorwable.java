@@ -39,8 +39,11 @@ public class Thorwable {
 
         try {
            exp("INT105");
+           
         } catch(MyException ex) {
             System.out.println(ex.getMessage());
+        } finally {
+            System.out.println("*********");
         }
         
         
