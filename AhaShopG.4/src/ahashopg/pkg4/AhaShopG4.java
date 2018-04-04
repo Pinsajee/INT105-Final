@@ -2,6 +2,7 @@ package ahashopg.pkg4;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -15,7 +16,10 @@ public class AhaShopG4 {
 
 //        state.executeUpdate("INSERT INTO product VALUES (24,'Watch',200)");
 //        state.executeUpdate("UPDATE product SET price=2000 WHERE product_id=24");
-        state.executeQuery("SELECT * FROM order_item");
+        ResultSet result = state.executeQuery("SELECT * FROM order_item");
+        while(result.next()) {
+            System.out.println(result.getInt(1));
+        }
         connect.close();
     }
 
