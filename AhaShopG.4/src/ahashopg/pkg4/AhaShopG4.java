@@ -17,8 +17,9 @@ public class AhaShopG4 {
 //        state.executeUpdate("INSERT INTO product VALUES (24,'Watch',200)");
 //        state.executeUpdate("UPDATE product SET price=2000 WHERE product_id=24");
         ResultSet result = state.executeQuery("SELECT * FROM order_item");
+        System.out.println("Order id\tProduct id\tQuantity\tPrice");
         while(result.next()) {
-            System.out.println(result.getInt(1));
+            System.out.println(result.getInt(1) + "\t\t" + result.getInt(2) + "\t\t" + result.getInt(3) + "\t\t" + result.getDouble(4));
         }
         connect.close();
     }
