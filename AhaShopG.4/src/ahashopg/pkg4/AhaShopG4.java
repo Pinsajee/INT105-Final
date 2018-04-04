@@ -33,9 +33,13 @@ public class AhaShopG4 {
                 + "WHERE order_item.ORDER_ID=51");
 
         System.out.println("Order id\tProduct Name\tQuantity\t\tPrice\t\tTotal\t\tStatus");
+        double total = 0;
+        
         while (result1.next()) {
+            total+= result1.getDouble("total");
             System.out.println(result1.getInt(1) + "\t\t" + result1.getString(2) + "\t\t" + result1.getInt(3) + "\t\t" + result1.getDouble(4) + "\t\t" + result1.getDouble(5) + "\t\t" + result1.getString(6));
         }
+        System.out.println("Total Price = " + total);
         connect.close();
     }
 
