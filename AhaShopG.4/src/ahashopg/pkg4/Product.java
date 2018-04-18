@@ -53,12 +53,18 @@ public class Product {
             statement.setString(2, product_name);
             statement.setDouble(3, price);
             statement.executeUpdate();
-
+//            statement.executeUpdate("INSERT INTO product VALUES ("+ this.product_id + ", '" + this.product_name + "' , " + this.price + ")");
         }
         
 
         connect.close();
         return resultUpdate;
+    }
+    
+    public static void orm(ResultSet result , Product product) throws SQLException {
+        product.setProduct_id(result.getInt("product_id"));
+        product.setProduct_name(result.getString("product_name"));
+        product.setPrice(result.getDouble("price"));
     }
 
     public static Product findProductById(int id) throws ClassNotFoundException, SQLException {
