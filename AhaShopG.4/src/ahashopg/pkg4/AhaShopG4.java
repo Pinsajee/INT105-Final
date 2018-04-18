@@ -52,7 +52,8 @@ public class AhaShopG4 {
 //        Product findProductByID = Product.findProductById(20);
 //        System.out.println(findProductByID.toString());
         
-            Product newProduct = new Product(300, "Mouse" , 100);
+            Product newProduct = Product.findProductById(300);
+            newProduct.setPrice(50);
             newProduct.updateProduct();
     
     }
