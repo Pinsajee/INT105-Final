@@ -1,7 +1,9 @@
 package ahashopg.pkg4;
 
+import dbconnection.DbConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,19 +22,42 @@ public class Product {
 
     public int updateProduct() throws ClassNotFoundException, SQLException {
         int resultUpdate = 0;
-        Class.forName("org.apache.derby.jdbc.ClientDriver");
-        Connection connecttion = DriverManager.getConnection("jdbc:derby://localhost:1527/aha_shopG4", "app", "app");
+        
+        Connection connect = DbConnection.getConnection();
 
-        Statement statement = connecttion.createStatement();
-        ResultSet result = statement.executeQuery("SELECT * FROM product WHERE product_id = " + this.product_id);
+//        Statement statement = connect.createStatement();
+//        
+//        ResultSet result = statement.executeQuery("SELECT * FROM product WHERE product_id = " + this.product_id);
+//
+//        if (result.next()) {
+//            statement.executeUpdate("UPDATE product SET product_name = '" + this.product_name + "' , price = " + this.price + " WHERE product id = " + this.product_id);
+//        } else {
+//            statement.executeUpdate("INSERT INTO product VALUES ("+ this.product_id + ", '" + this.product_name + "' , " + this.price + ")");
+//        }
+        
+        PreparedStatement statement = connect.prepareStatement("SELECT * FROM product WHERE product_id = ?");
+        
+        statement.setInt(1, this.product_id);
+        
+        ResultSet result = statement.executeQuery();
 
         if (result.next()) {
-            statement.executeUpdate("UPDATE product SET product_name = '" + this.product_name + "' , price = " + this.price);
+            statement = connect.prepareStatement("UPDATE product SET product_name = ? , price = ? WHERE product_id = ?");
+            statement.setString(1, this.product_name);
+            statement.setDouble(2, this.price);
+            statement.setInt(3, this.product_id);
+            statement.executeUpdate();
         } else {
-            statement.executeUpdate("INSERT INTO product VALUES ("+ this.product_id + ", '" + this.product_name + "' , " + this.price + ")");
-        }
+            statement = connect.prepareStatement("INSERT INTO product VALUES product_id = ? , product_name = ? , price = ?");
+            statement.setInt(1, product_id);
+            statement.setString(2, product_name);
+            statement.setDouble(3, price);
+            statement.executeUpdate();
 
-        connecttion.close();
+        }
+        
+
+        connect.close();
         return resultUpdate;
     }
 
