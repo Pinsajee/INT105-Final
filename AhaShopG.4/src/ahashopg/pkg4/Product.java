@@ -1,5 +1,11 @@
 package ahashopg.pkg4;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class Product {
 
     private int product_id;
@@ -10,6 +16,23 @@ public class Product {
         this.product_id = product_id;
         this.product_name = product_name;
         this.price = price;
+    }
+    
+    public static Product findProductById(int id) throws ClassNotFoundException, SQLException {
+        Product product = null;
+        Class.forName("org.apache.derby.jdbc.ClientDriver");
+        Connection connecttion = DriverManager.getConnection("jdbc:derby://localhost:1527/aha_shopG4", "app", "app");
+
+        Statement statement = connecttion.createStatement();
+        ResultSet result = statement.executeQuery("SELECT * FROM product WHERE product_id = " + id);
+        
+        if(result.next()) {
+            product = new Product(result.getInt("product_id"), result.getString("product_name"), result.getDouble("price"));
+        }
+        
+        connecttion.close();
+
+        return product;
     }
 
     public int getProduct_id() {
