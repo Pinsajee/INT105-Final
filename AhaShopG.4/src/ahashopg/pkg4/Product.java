@@ -17,7 +17,25 @@ public class Product {
         this.product_name = product_name;
         this.price = price;
     }
-    
+
+    public int updateProduct() throws ClassNotFoundException, SQLException {
+        int resultUpdate = 0;
+        Class.forName("org.apache.derby.jdbc.ClientDriver");
+        Connection connecttion = DriverManager.getConnection("jdbc:derby://localhost:1527/aha_shopG4", "app", "app");
+
+        Statement statement = connecttion.createStatement();
+        ResultSet result = statement.executeQuery("SELECT * FROM product WHERE product_id = " + this.product_id);
+
+        if (result.next()) {
+            statement.executeUpdate("UPDATE product SET product_name = '" + this.product_name + "' , price = " + this.price);
+        } else {
+            statement.executeUpdate("INSERT INTO product VALUES ("+ this.product_id + ", '" + this.product_name + "' , " + this.price + ")");
+        }
+
+        connecttion.close();
+        return resultUpdate;
+    }
+
     public static Product findProductById(int id) throws ClassNotFoundException, SQLException {
         Product product = null;
         Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -25,11 +43,11 @@ public class Product {
 
         Statement statement = connecttion.createStatement();
         ResultSet result = statement.executeQuery("SELECT * FROM product WHERE product_id = " + id);
-        
-        if(result.next()) {
+
+        if (result.next()) {
             product = new Product(result.getInt("product_id"), result.getString("product_name"), result.getDouble("price"));
         }
-        
+
         connecttion.close();
 
         return product;
