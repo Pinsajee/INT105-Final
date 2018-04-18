@@ -20,6 +20,10 @@ public class Product {
         this.price = price;
     }
 
+    private Product() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int updateProduct() throws ClassNotFoundException, SQLException {
         int resultUpdate = 0;
         
@@ -76,7 +80,8 @@ public class Product {
         ResultSet result = statement.executeQuery("SELECT * FROM product WHERE product_id = " + id);
 
         if (result.next()) {
-            product = new Product(result.getInt("product_id"), result.getString("product_name"), result.getDouble("price"));
+            product = new Product();
+            orm(result , product);
         }
 
         connecttion.close();
