@@ -36,19 +36,25 @@ public class AhaShopG4 {
 //        }
 //        System.out.println("Total Price = " + total);
 //        connect.close();
-    Class.forName("org.apache.derby.jdbc.ClientDriver");
-    Connection connecttion = DriverManager.getConnection("jdbc:derby://localhost:1527/aha_shopG4", "app", "app");
+//        Class.forName("org.apache.derby.jdbc.ClientDriver");
+//        Connection connecttion = DriverManager.getConnection("jdbc:derby://localhost:1527/aha_shopG4", "app", "app");
+//
+//        Statement statement = connecttion.createStatement();
+//        ResultSet result = statement.executeQuery("SELECT * FROM product");
+//        Product product;
+//        while (result.next()) {
+//            product = new Product(result.getInt("product_id"), result.getString("product_name"), result.getDouble("price"));
+//            System.out.println(product.toString());
+//        }
+//
+//        connecttion.close();
+
+//        Product findProductByID = Product.findProductById(20);
+//        System.out.println(findProductByID.toString());
+        
+            Product newProduct = new Product(300, "Mouse" , 100);
+            newProduct.updateProduct();
     
-    Statement statement = connecttion.createStatement();
-    ResultSet result = statement.executeQuery("SELECT * FROM product");
-    Product product;
-    while(result.next()) {
-        product = new Product(result.getInt("product_id") , result.getString("product_name") , result.getDouble("price"));
-        System.out.println(product.toString());
     }
-    
-    connecttion.close();
-    }
-    
 
 }
