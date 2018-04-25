@@ -124,11 +124,25 @@ public class AhaShopG4 {
 //            }
 //        }
         // file reader 2
+//        File f = new File("file/product.csv");
+//        Scanner scan = new Scanner(f);
+//        scan.useDelimiter(",");
+//        while(scan.hasNext()) {
+//            System.out.println(scan.next());
+//        }
+//        scan.close();
+        Product prod = new Product();
         File f = new File("file/product.csv");
         Scanner scan = new Scanner(f);
-        scan.useDelimiter(",");
+        //scan.useDelimiter(",");
         while(scan.hasNext()) {
-            System.out.println(scan.next());
+            String temp = scan.nextLine();
+            String[] temp2 = temp.split(",");
+            
+            prod.setProduct_id(Integer.parseInt(temp2[0]));
+            prod.setProduct_name(temp2[1]);
+            prod.setPrice(Double.parseDouble(temp2[2]));
+            System.out.println(prod);
         }
         scan.close();
     }
