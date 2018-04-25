@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class AhaShopG4 {
 
@@ -41,20 +42,33 @@ public class AhaShopG4 {
 //
 //        Statement statement = connecttion.createStatement();
 //        ResultSet result = statement.executeQuery("SELECT * FROM product");
-//        Product product;
+//        ProductOld product;
 //        while (result.next()) {
-//            product = new Product(result.getInt("product_id"), result.getString("product_name"), result.getDouble("price"));
+//            product = new ProductOld(result.getInt("product_id"), result.getString("product_name"), result.getDouble("price"));
 //            System.out.println(product.toString());
 //        }
 //
 //        connecttion.close();
 
-//        Product findProductByID = Product.findProductById(20);
+//        ProductOld findProductByID = ProductOld.findProductById(20);
 //        System.out.println(findProductByID.toString());
         
-            Product newProduct = Product.findProductById(300);
-            newProduct.setPrice(50);
-            newProduct.updateProduct();
+//            ProductOld newProduct = ProductOld.findProductById(300);
+//            newProduct.setPrice(50);
+//            newProduct.updateProduct();
+            
+//            ProductAgain product01 = ProductAgain.findById(5);
+//            System.out.println(product01);
+
+        String[] str_arr = new String[10];
+        str_arr[0] = "Hello World!";
+        str_arr[1] = "Java Programming";
+        System.out.println("Size of str_arr: " + str_arr.length);
+        
+        ArrayList<String> str_arr_list = new ArrayList<String>();
+        str_arr_list.add("Hello World!");
+        str_arr_list.add("Java Programming");
+        System.out.println("Size of str_arr_list: " + str_arr_list.size());
     
     }
 
