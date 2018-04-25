@@ -10,12 +10,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class AhaShopG4 {
 
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException, FileNotFoundException {
 //        Class.forName("org.apache.derby.jdbc.ClientDriver");
 //        Connection connect = DriverManager.getConnection("jdbc:derby://localhost:1527/aha_shopG4", "app", "app");
 //
@@ -103,26 +104,33 @@ public class AhaShopG4 {
         
     //file reader
     
-    File f = new File("file/product.csv");
-        FileReader fr = null;
-        try {
-            fr = new FileReader(f);
-            int ch;
-            while ((ch = fr.read()) != -1) {
-                System.out.print((char) ch);
-            }
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());;
-        } finally {
-            try {
-                fr.close();
-            } catch (IOException ex) {
-
-            }
+//    File f = new File("file/product.csv");
+//        FileReader fr = null;
+//        try {
+//            fr = new FileReader(f);
+//            int ch;
+//            while ((ch = fr.read()) != -1) {
+//                System.out.print((char) ch);
+//            }
+//        } catch (FileNotFoundException ex) {
+//            System.out.println(ex.getMessage());
+//        } catch (IOException ex) {
+//            System.out.println(ex.getMessage());;
+//        } finally {
+//            try {
+//                fr.close();
+//            } catch (IOException ex) {
+//
+//            }
+//        }
+        // file reader 2
+        File f = new File("file/product.csv");
+        Scanner scan = new Scanner(f);
+        scan.useDelimiter(",");
+        while(scan.hasNext()) {
+            System.out.println(scan.next());
         }
-
+        scan.close();
     }
 
 }
