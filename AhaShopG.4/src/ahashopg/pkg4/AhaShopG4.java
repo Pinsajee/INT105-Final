@@ -1,11 +1,17 @@
 package ahashopg.pkg4;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AhaShopG4 {
 
@@ -57,42 +63,63 @@ public class AhaShopG4 {
 //            newProduct.updateProduct();
 //            ProductAgain product01 = ProductAgain.findById(5);
 //            System.out.println(product01);
-        String[] str_arr = new String[2];
-        str_arr[0] = "Hello World!";
-        str_arr[1] = "Java Programming";
-        System.out.println("Size of str_arr: " + str_arr.length);
+//        String[] str_arr = new String[2];
+//        str_arr[0] = "Hello World!";
+//        str_arr[1] = "Java Programming";
+//        System.out.println("Size of str_arr: " + str_arr.length);
+//
+//        for (int i = 0; i < str_arr.length; i++) {
+//            System.out.println(str_arr[i]);
+//        }
+//
+//        System.out.println("-------------------------------------------");
+//
+//        ArrayList<String> str_arr_list = new ArrayList<String>();
+//        str_arr_list.add("Hello World!");
+//        str_arr_list.add("Java Programming");
+//        str_arr_list.add("Anything");
+//        str_arr_list.remove(1);
+//        System.out.println("Size of str_arr_list: " + str_arr_list.size());
+//
+//        for (int i = 0; i < str_arr_list.size(); i++) {
+//            System.out.println(str_arr_list.get(i));
+//        }
+//        
+//        System.out.println("-------------------------------------------");
+////
+//        Product product01 = new Product(200 , "Mouse" , 50);
+//        Product product02 = new Product(201 , "Pen" , 5);
+//        
+//        ArrayList<Product> productArrayList = new ArrayList<Product>();
+//        productArrayList.add(product01);
+//        productArrayList.add(product02);
+//        productArrayList.add(new Product(202 , "Keyboard" , 3));
+//        productArrayList.add(new Product(203 , "Monitor" , 200));
+//        
+//        for (int i = 0; i < productArrayList.size(); i++) {
+//            System.out.println(productArrayList.get(i).toString());
+//          productArrayList.get(i).updateProduct();
+//        }
+        File f = new File("file/product.csv");
+        FileReader fr = null;
+        try {
+            fr = new FileReader(f);
+            int ch;
+            while ((ch = fr.read()) != -1) {
+                System.out.print((char) ch);
+            }
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());;
+        } finally {
+            try {
+                fr.close();
+            } catch (IOException ex) {
 
-        for (int i = 0; i < str_arr.length; i++) {
-            System.out.println(str_arr[i]);
+            }
         }
 
-        System.out.println("-------------------------------------------");
-
-        ArrayList<String> str_arr_list = new ArrayList<String>();
-        str_arr_list.add("Hello World!");
-        str_arr_list.add("Java Programming");
-        str_arr_list.add("Anything");
-        str_arr_list.remove(1);
-        System.out.println("Size of str_arr_list: " + str_arr_list.size());
-
-        for (int i = 0; i < str_arr_list.size(); i++) {
-            System.out.println(str_arr_list.get(i));
-        }
-        
-        System.out.println("-------------------------------------------");
-
-        Product product01 = new Product(200 , "Mouse" , 50);
-        Product product02 = new Product(201 , "Pen" , 5);
-        
-        ArrayList<Product> productArrayList = new ArrayList<Product>();
-        productArrayList.add(product01);
-        productArrayList.add(product02);
-        productArrayList.add(new Product(202 , "Keyboard" , 3));
-        productArrayList.add(new Product(203 , "Monitor" , 200));
-        
-        for (int i = 0; i < productArrayList.size(); i++) {
-            System.out.println(productArrayList.get(i).toString());
-        }
     }
 
 }
