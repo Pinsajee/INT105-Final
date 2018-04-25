@@ -52,24 +52,47 @@ public class AhaShopG4 {
 
 //        ProductOld findProductByID = ProductOld.findProductById(20);
 //        System.out.println(findProductByID.toString());
-        
 //            ProductOld newProduct = ProductOld.findProductById(300);
 //            newProduct.setPrice(50);
 //            newProduct.updateProduct();
-            
 //            ProductAgain product01 = ProductAgain.findById(5);
 //            System.out.println(product01);
-
-        String[] str_arr = new String[10];
+        String[] str_arr = new String[2];
         str_arr[0] = "Hello World!";
         str_arr[1] = "Java Programming";
         System.out.println("Size of str_arr: " + str_arr.length);
-        
+
+        for (int i = 0; i < str_arr.length; i++) {
+            System.out.println(str_arr[i]);
+        }
+
+        System.out.println("-------------------------------------------");
+
         ArrayList<String> str_arr_list = new ArrayList<String>();
         str_arr_list.add("Hello World!");
         str_arr_list.add("Java Programming");
+        str_arr_list.add("Anything");
+        str_arr_list.remove(1);
         System.out.println("Size of str_arr_list: " + str_arr_list.size());
-    
+
+        for (int i = 0; i < str_arr_list.size(); i++) {
+            System.out.println(str_arr_list.get(i));
+        }
+        
+        System.out.println("-------------------------------------------");
+
+        Product product01 = new Product(200 , "Mouse" , 50);
+        Product product02 = new Product(201 , "Pen" , 5);
+        
+        ArrayList<Product> productArrayList = new ArrayList<Product>();
+        productArrayList.add(product01);
+        productArrayList.add(product02);
+        productArrayList.add(new Product(202 , "Keyboard" , 3));
+        productArrayList.add(new Product(203 , "Monitor" , 200));
+        
+        for (int i = 0; i < productArrayList.size(); i++) {
+            System.out.println(productArrayList.get(i).toString());
+        }
     }
 
 }
