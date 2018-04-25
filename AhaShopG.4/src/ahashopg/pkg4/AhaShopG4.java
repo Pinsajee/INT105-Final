@@ -3,6 +3,7 @@ package ahashopg.pkg4;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +17,7 @@ import java.util.logging.Logger;
 
 public class AhaShopG4 {
 
-    public static void main(String[] args) throws ClassNotFoundException, SQLException, FileNotFoundException {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException, FileNotFoundException, IOException {
 //        Class.forName("org.apache.derby.jdbc.ClientDriver");
 //        Connection connect = DriverManager.getConnection("jdbc:derby://localhost:1527/aha_shopG4", "app", "app");
 //
@@ -131,20 +132,34 @@ public class AhaShopG4 {
 //            System.out.println(scan.next());
 //        }
 //        scan.close();
-        Product prod = new Product();
-        File f = new File("file/product.csv");
-        Scanner scan = new Scanner(f);
-        //scan.useDelimiter(",");
-        while(scan.hasNext()) {
-            String temp = scan.nextLine();
-            String[] temp2 = temp.split(",");
-            
-            prod.setProduct_id(Integer.parseInt(temp2[0]));
-            prod.setProduct_name(temp2[1]);
-            prod.setPrice(Double.parseDouble(temp2[2]));
-            System.out.println(prod);
-        }
-        scan.close();
+//        Product prod = new Product();
+//        File f = new File("file/product.csv");
+//        Scanner scan = new Scanner(f);
+//        //scan.useDelimiter(",");
+//        while(scan.hasNext()) {
+//            String temp = scan.nextLine();
+//            String[] temp2 = temp.split(",");
+//            
+//            prod.setProduct_id(Integer.parseInt(temp2[0]));
+//            prod.setProduct_name(temp2[1]);
+//            prod.setPrice(Double.parseDouble(temp2[2]));
+//            System.out.println(prod);
+//            prod.updateProduct();
+//        }
+//        scan.close();
+          
+//        File f = new File("file/Name.txt");
+//        Scanner scan = new Scanner(f);
+//        while (scan.hasNext()) {
+//            System.out.println(scan.nextLine());
+//        }
+//        scan.close();
+           
+           File f = new File("file/testWrite.txt");
+           FileWriter fw = new FileWriter("file/testWrite.txt");
+           fw.write("Pin\n");
+           fw.write("Daneas\n");
+           fw.close();
     }
 
 }
