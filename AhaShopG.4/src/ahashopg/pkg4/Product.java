@@ -14,14 +14,15 @@ public class Product {
     private String product_name;
     private double price;
 
+    public Product() {
+    }
+
+    
+    
     public Product(int product_id, String product_name, double price) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.price = price;
-    }
-
-    private Product() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int updateProduct() throws ClassNotFoundException, SQLException {
@@ -52,7 +53,7 @@ public class Product {
             statement.setInt(3, this.product_id);
             statement.executeUpdate();
         } else {
-            statement = connect.prepareStatement("INSERT INTO product VALUES product_id = ? , product_name = ? , price = ?");
+            statement = connect.prepareStatement("INSERT INTO product VALUES (? , ? , ?)");
             statement.setInt(1, product_id);
             statement.setString(2, product_name);
             statement.setDouble(3, price);
