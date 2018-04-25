@@ -100,7 +100,10 @@ public class AhaShopG4 {
 //            System.out.println(productArrayList.get(i).toString());
 //          productArrayList.get(i).updateProduct();
 //        }
-        File f = new File("file/product.csv");
+        
+    //file reader
+    
+    File f = new File("file/product.csv");
         FileReader fr = null;
         try {
             fr = new FileReader(f);
