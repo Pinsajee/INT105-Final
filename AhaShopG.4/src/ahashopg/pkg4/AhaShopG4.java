@@ -156,7 +156,7 @@ public class AhaShopG4 {
 //        scan.close();
            
            File f = new File("file/testWrite.txt");
-           FileWriter fw = new FileWriter("file/testWrite.txt");
+           FileWriter fw = new FileWriter(f , true);
            fw.write("Pin\n");
            fw.write("Daneas\n");
            fw.close();
