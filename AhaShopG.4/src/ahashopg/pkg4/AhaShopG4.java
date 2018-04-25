@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -155,11 +156,18 @@ public class AhaShopG4 {
 //        }
 //        scan.close();
            
-           File f = new File("file/testWrite.txt");
+//           File f = new File("file/testWrite.txt");
+//           FileWriter fw = new FileWriter(f , true);
+//           fw.write("Pin\n");
+//           fw.write("Daneas\n");
+//           fw.close();
+
+        File f = new File("file/testWrite.txt");
            FileWriter fw = new FileWriter(f , true);
-           fw.write("Pin\n");
-           fw.write("Daneas\n");
-           fw.close();
+           PrintWriter pw = new PrintWriter(fw);
+           pw.println("Pin");
+           pw.println("Daneas");
+           pw.close();
     }
 
 }
