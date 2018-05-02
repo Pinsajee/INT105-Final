@@ -19,7 +19,9 @@ public class MyListennerForMyMainFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 //        System.out.println(frame.getTfCourseID().getText());
     JTextField temp = frame.getTfCourseID();
-        System.out.println(temp.getText());
+    System.out.println(temp.getText());
+    
+    frame.getTextOutput().append(frame.getTfCourseID().getText());
     
     }
     
