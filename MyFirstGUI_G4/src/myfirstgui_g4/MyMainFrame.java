@@ -37,8 +37,8 @@ public class MyMainFrame extends JFrame {
         tfGrade = new JTextField(4);
 
         lbCourseID = new JLabel("Course ID");
-        lbCredit = new JLabel("Course ID");
-        lbGrade = new JLabel("Course ID");
+        lbCredit = new JLabel("Credit");
+        lbGrade = new JLabel("Grade");
 
         panel01 = new JPanel();
         panel02 = new JPanel();
