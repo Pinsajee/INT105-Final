@@ -1,6 +1,8 @@
 package myfirstgui_g4;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,6 +20,13 @@ public class MyFirstGUI_G4 {
         
         JButton buttonOK = new JButton("OK");
         
+        buttonOK.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("OK button clicked");
+            }
+        });
+                
         JTextField tfCourseID = new JTextField(10);
         JLabel lbCourseID = new JLabel("Course ID");
         
@@ -33,8 +42,9 @@ public class MyFirstGUI_G4 {
         panal01.add(tfCredit);
         panal01.add(lbGrade);
         panal01.add(tfGrade);
-
         panal01.add(buttonOK);
+        
+        
 
         frame.add(panal01);
 
