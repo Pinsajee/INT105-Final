@@ -25,8 +25,13 @@ public class ObjectFile {
         
          
         ObjectInputStream objIn = new ObjectInputStream(new FileInputStream(f2));
-        System.out.println(objIn.readObject());
-        System.out.println(objIn.readObject());
+        try {
+            while(true) {
+                System.out.println(objIn.readObject());
+            }
+        } catch(Exception ex) {
+            
+        }
         objIn.close();
 
         
