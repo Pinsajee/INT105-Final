@@ -12,10 +12,25 @@ public class ObjectFile {
         objOut.writeObject(product1);
         objOut.close();
         
-        ObjectInputStream objIn = new ObjectInputStream(new FileInputStream(f));
+                
+        File f2 = new File("ObjectFileAppend.dat");
+        ObjectOutputStream objOutAppend = null;
+        if(f2.exists()) {
+            objOutAppend = new AppenedObjectOutputStream (new FileOutputStream(f2 , true));
+        } else {
+            objOutAppend = new ObjectOutputStream(new FileOutputStream(f2));
+        }
+        objOutAppend.writeObject(product1);
+        objOutAppend.close();
+        
+         
+        ObjectInputStream objIn = new ObjectInputStream(new FileInputStream(f2));
         System.out.println(objIn.readObject());
         System.out.println(objIn.readObject());
         objIn.close();
+
+        
+        
     
     }
 }
